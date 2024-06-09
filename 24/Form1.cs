@@ -18,24 +18,28 @@ namespace _24
         }
         private void df_dx2()
         {
-//            double FF = Math.Abs(4.0 / (3.0 * Math.Pow((4 * R2 + 4)* (4 * R2 + 4), 1 / 3)));
- //           if (Math.Abs(4 / (3 * (Math.Pow(4*R2 + 4, (2 / 3))))) < 1)
+            //double FF = Math.Abs(4.0 / (3.0 * Math.Pow((4 * R2 + 4)* (4 * R2 + 4), 1 / 3)));
+            if (Math.Abs((3 * R2 + 3) / (3 * Math.Pow(Math.Abs(4 * R2 + 4), (double)1 / 3)* (4 * R2 + 4) / Math.Abs(4 * R2 + 4))) < 1)
             {
                 shod2 = true;
+            }
+            else
+            {
+                textBox3.Text = Convert.ToString(Math.Abs(4 / (3 * (Math.Pow(4 * R2 + 4, (2 / 3))))));
             }
         }
 
         private void x1()
         {
-            R1 = Math.Pow(4 * L2 + 4, 1 / 3);
+            R1 = Math.Pow(Math.Abs(4 * L2 + 4), (double)1 / 3) * (4 * L2 + 4) / Math.Abs(4 * L2 + 4);
         }
         private void x2()
         {
-            R2 = Math.Sqrt(2 - L1 * L1);
+            R2 = Math.Sqrt(Math.Abs(2 - L1)) * (2 - L1) / Math.Abs(2 - L1);
         }
         private void x2_2()
         {
-            R2 = Math.Sqrt(2 - R1 * R1);
+            R2 = Math.Sqrt(2 - R1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -66,9 +70,9 @@ namespace _24
                         x2_2();
                     } while ((Math.Sqrt(Math.Pow(L1 - R1, 2) + Math.Pow(L2 - R2, 2))) > 0.01);
                 }
+                textBox4.Text = Convert.ToString(R2);
+                textBox3.Text = Convert.ToString(R1);
             }
-            textBox4.Text = Convert.ToString(R2);
-            textBox3.Text = Convert.ToString(R1);
         }
 
         private void label1_Click(object sender, EventArgs e)
